@@ -130,9 +130,11 @@ Language Chain::Suffixes() const {
  * @return true si esta cadena es menor que other
  */
 bool Chain::operator<(const Chain& other) const {
+  if (Length() != other.Length()) {
+    return Length() < other.Length();
+  }
   return sequence_ < other.sequence_;
 }
-
 /**
  * @brief Sobrecarga del operador de salida para escribir la cadena
  * @param os Flujo de salida

@@ -20,6 +20,8 @@
 #include <iostream>
 #include <string>
 
+class Language;
+
 /**
  * @brief Clase que representa una cadena formal sobre un alfabeto
  */

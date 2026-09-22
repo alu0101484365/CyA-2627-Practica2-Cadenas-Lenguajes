@@ -52,9 +52,12 @@ bool Alphabet::Validation(char symbol) const {
  * @return std::ostream& os -> Referencia al flujo de salida
  */
 std::ostream& operator<<(std::ostream& os, const Alphabet& alphabet) {
-  os << "{ ";
+  os << "{";
+  bool first = true;
   for (char symbol : alphabet.symbols_) {
-    os << symbol << " ";
+    if(!first) os << ", ";
+    os << symbol;
+    first = false;
   }
   os << "}";
   return os;
