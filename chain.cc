@@ -27,8 +27,7 @@ Chain::Chain() : sequence_("&"), alphabet_() {}
  * @param sequence Secuencia de caracteres
  * @param alphabet Alfabeto asociado
  */
-Chain::Chain(const std::string& sequence, const Alphabet& alphabet)
-    : sequence_(sequence), alphabet_(alphabet) {}
+Chain::Chain(const std::string& sequence, const Alphabet& alphabet) : sequence_(sequence), alphabet_(alphabet) {}
 
 /**
  * @brief Devuelve la secuencia de caracteres de la cadena
@@ -135,6 +134,8 @@ bool Chain::operator<(const Chain& other) const {
   }
   return sequence_ < other.sequence_;
 }
+
+
 /**
  * @brief Sobrecarga del operador de salida para escribir la cadena
  * @param os Flujo de salida
@@ -144,4 +145,26 @@ bool Chain::operator<(const Chain& other) const {
 std::ostream& operator<<(std::ostream& os, const Chain& chain) {
   os << chain.sequence_;
   return os;
+}
+
+
+/**
+ * @brief Elimina todas las apariciones de un caracter dado en la cadena
+ * @param char_deleted Caracter a eliminar de la secuencia
+ * @return Chain Nueva cadena resultante
+ */
+Chain Chain::RemoveChar(char char_deleted) const {
+  if (sequence_ == "&") {
+    return *this;
+  }
+  std::string new_sequence = "";
+  for (char symbol : sequence_) {
+    if (symbol != char_deleted) {
+      new_sequence += symbol;
+    }
+  }
+  if (new_sequence.empty()) {
+    new_sequence = "&";
+  }
+  return Chain(new_sequence, alphabet_);
 }

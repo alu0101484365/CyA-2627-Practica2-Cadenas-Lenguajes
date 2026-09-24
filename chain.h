@@ -41,6 +41,8 @@ class Chain {
   Language Prefixes() const; // Método 4
   Language Suffixes() const; // Método 5
   bool IsValid() const; // Método 6
+  // Modificación
+  Chain RemoveChar(char char_deleted) const; // Método 7
   // Sobrecarga del operador de salida
   friend std::ostream& operator<<(std::ostream& os, const Chain& chain);
   bool operator<(const Chain& other) const;
